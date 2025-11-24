@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  ssh-forward:
+    build:
+      context: ./
+      dockerfile: Dockerfile.ssh
+    container_name: ssh-forward
+    restart: always
+    network_mode: "host"
+    environment:
+      # VPNサーバーに接続するユーザー名
+      SSH_USER: <username>
+      # VPNサーバーのIP
+      SSH_SERVER: <server's IP>
+      # jellyfinの起動しているサーバーが192.168.1.10のでWebサービスが起動しているサーバーが192.168.1.20でポートが3000の場合は下記のようになる
+      # PORT_FORWARD_LIST: "8097:192.168.1.10:8097,3000:192.168.1.20:3000"
+      PORT_FORWARD_LIST: < port forward list>
+      LOCAL_FORWARD_LIST: "0.0.0.0:51821:localhost:51821"
+    volumes:
+      - ~/.ssh/id_rsa:/root/.ssh/id_rsa:ro
+
+
+
+
+

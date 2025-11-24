@@ -1,0 +1,10 @@
+FROM alpine:3.18
+
+RUN apk add --no-cache openssh bash
+
+WORKDIR /root
+
+COPY start-ssh.sh /root/start-ssh.sh
+RUN chmod +x /root/start-ssh.sh
+
+CMD ["/root/start-ssh.sh"]
