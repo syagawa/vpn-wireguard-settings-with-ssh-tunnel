@@ -119,6 +119,9 @@ $ sudo iptables -I INPUT 2 -i wg0 -p icmp -j ACCEPT
 $ sudo netfilter-persistent save
 ```
 
+7. VPSのネットワーク側のUDP:51820を許可
+Oracleの場合 コンピュート > インスタンス > 仮想クラウドネットワーク(VCN) > vcnなんちゃらを選択 > セキュリティ > セキュリティ・リスト > Default Security なんちゃらを選択 > セキュリティ・ルール > イングレス・ルール から UDP:51820を追加する
+
 ### B. ホームネットワーク側の設定
 
 ホームネットワーク内のServer1（Ubuntuを想定）を使用。IPは192.168.1.10とする。
